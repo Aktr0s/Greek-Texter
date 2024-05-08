@@ -29,10 +29,7 @@ def convert_to_greek(text):
     'y': 'γ', 'Y': 'λ',
     'z': 'ζ', 'Z': 'Ζ'
 }
-
-
     converted_text = ''.join(conversion_dict[char] if char in conversion_dict else char for char in text)
-
     return converted_text
 
 GUI(convert_to_greek)
