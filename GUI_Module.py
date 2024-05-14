@@ -1,14 +1,13 @@
 import tkinter as tk
-from pyperclip import copy as pyperclip_copy # type: ignore
 
 class GUI:
     def __init__(self, callback):
         self.callback = callback
 
         self.root = tk.Tk()
-        self.root.geometry("1000x650")
+        self.root.geometry("800x540")
+        self.root.minsize(800,540)
         self.root.title("Greek String Converter")
-        self.root.resizable(False,False)
 
         label = tk.Label(self.root, text="Type in some text and program will replace it with greek characters", font=('Consolas',13))
         label.pack(pady=20)
@@ -34,8 +33,9 @@ class GUI:
 
     def copy_clipboard(self):
         text_copy = self.textbox.get("1.0", "end-1c")
-        pyperclip_copy(text_copy)
-        
+        self.root.clipboard_clear()
+        self.root.clipboard_append(text_copy)
+
 
     def update_textbox(self, text):
         self.textbox.delete("1.0", "end")
